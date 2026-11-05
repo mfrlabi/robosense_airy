@@ -25,6 +25,14 @@ bash
     rostopic hz /rslidar_points /rslidar_imu_data
     rosbag record -b 32 /rslidar_points /rslidar_imu_data -O ~/airy_data.bag
 
+
+## for ros2 humble
+
+    source /opt/ros/humble/setup.bash
+    source ~/robosense_airy_ws/install/setup.bash
+    ros2 run rslidar_sdk rslidar_sdk_node --ros-args -r __node:=my_airy_node
+
+
 # Verify
 
     rosbag info ~/airy_data.bag

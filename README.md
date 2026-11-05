@@ -42,6 +42,11 @@ bash
     source ~/robosense_airy_ws/devel/setup.bash
     roslaunch rslidar_sdk start.launch
 
+## for ROS2 humble
+
+    source install/setup.bash
+    ros2 launch rslidar_sdk start.py
+
 
 # RoboSense Airy LiDAR on Unitree Jetson (ROS Noetic)
 

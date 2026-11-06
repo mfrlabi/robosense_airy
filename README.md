@@ -20,17 +20,20 @@ bash
     source ~/robosense_airy_ws/devel/setup.bash
     ~/robosense_airy_ws/devel/lib/rslidar_sdk/rslidar_sdk_node __name:=my_airy_node
 
-# In another terminal
-
-    rostopic hz /rslidar_points /rslidar_imu_data
-    rosbag record -b 32 /rslidar_points /rslidar_imu_data -O ~/airy_data.bag
-
 
 ## for ros2 humble
 
     source /opt/ros/humble/setup.bash
     source ~/robosense_airy_ws/install/setup.bash
     ros2 run rslidar_sdk rslidar_sdk_node --ros-args -r __node:=my_airy_node
+
+# In another terminal
+
+    rostopic hz /rslidar_points /rslidar_imu_data
+    rosbag record -b 32 /rslidar_points /rslidar_imu_data -O ~/airy_data.bag
+
+
+
 
 
 # Verify
@@ -47,6 +50,9 @@ bash
     source install/setup.bash
     ros2 launch rslidar_sdk start.py
 
+## save pcd map via Funny lidar slam
+
+    ros2 service call /save_map funny_lidar_slam/srv/SaveMap "{map_path: '', split_map: false}"
 
 # RoboSense Airy LiDAR on Unitree Jetson (ROS Noetic)
 
